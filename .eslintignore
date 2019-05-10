@@ -1,0 +1,7 @@
+dist
+node_modules
+src/assets
+*.json
+*.css
+*.scss
+config/*.js
