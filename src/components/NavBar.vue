@@ -2,7 +2,10 @@
 	<div id="nav-bar">
 		<div id="dynamic-nav">
 			<div id="open-menu">
-				<button prevent @click="toggleMenu()">ME<br />NU</button>
+				<button prevent @click="toggleMenu()">
+					<div>ME</div>
+					<div>NU</div>
+				</button>
 			</div>
 			<transition-group
 				transition="fade"
@@ -12,24 +15,20 @@
 				@enter="enter"
 				@leave="leave"
 			>
-				<router-link
-					v-for="item in showLinks"
-					:key="item.title"
-					class="nav-container"
-					:to="item.linkto"
-					tag="div"
-				>
-					<div class="label">
-						<p>{{ item.title }}</p>
-					</div>
-					<img
-						class="cross-icon"
-						src="https://img.icons8.com/windows/32/000000/delete-sign.png"
-					/>
-				</router-link>
+				<div v-for="item in showLinks" :key="item.title" @click="toggleMenu()">
+					<router-link class="nav-container" :to="item.linkto" tag="div">
+						<div class="label">
+							<p>{{ item.title }}</p>
+						</div>
+						<img
+							class="cross-icon"
+							src="https://img.icons8.com/windows/32/000000/delete-sign.png"
+						/>
+					</router-link>
+				</div>
 			</transition-group>
 		</div>
-		<div class="overlay"></div>
+		<!-- <div class="overlay"></div> -->
 	</div>
 </template>
 
@@ -75,9 +74,11 @@ export default {
 			if (this.openMenu) {
 				this.showLinks = this.links;
 				document.getElementById('nav-bar').style.background = 'rgba(255, 255, 255, 0.8)';
+				document.getElementById('nav-bar').style.height = '100vh';
 			} else {
 				this.showLinks = [];
 				document.getElementById('nav-bar').style.background = 'none';
+				document.getElementById('nav-bar').style.height = '100px';
 			}
 		},
 		beforeEnter: function(el) {
@@ -102,9 +103,10 @@ export default {
 
 <style lang="scss" scoped>
 #nav-bar {
+	z-index: 2;
 	position: absolute;
 	width: 100%;
-	height: 100%;
+	height: 10px;
 	top: 0;
 	left: 0;
 	transition: all 0.5s ease;
@@ -128,14 +130,13 @@ export default {
 		display: inline-block;
 		vertical-align: middle;
 		width: 15px;
+		margin: 0 auto;
 		height: 15px;
-		margin: auto;
 		margin-right: 25px;
 	}
 	.label p {
-		opacity: 0;
-		transition: all 1s ease;
 		margin: 0 auto;
+		vertical-align: middle;
 	}
 	.label {
 		width: 60%;
@@ -144,6 +145,8 @@ export default {
 		margin: auto;
 		padding: 0;
 		text-align: right;
+		opacity: 0;
+		transition: all 1s ease;
 	}
 }
 #open-menu {
@@ -155,6 +158,8 @@ export default {
 		width: 100%;
 		height: 100%;
 		text-align: right;
+		margin-bottom: 20px;
+		margin-top: 20px;
 		padding-right: 20px;
 		font-size: 20px;
 	}
@@ -163,7 +168,7 @@ button:focus {
 	outline: none;
 }
 .nav-container:hover {
-	.label p {
+	.label {
 		opacity: 1;
 	}
 }
@@ -171,9 +176,14 @@ button:focus {
 	opacity: 1;
 	transition: all 1s ease;
 }
-
 .fade-enter,
 .fade-leave {
 	opacity: 0;
+}
+@media only screen and (max-width: 760px) {
+	.label {
+		opacity: 1 !important;
+		display: inline-block;
+	}
 }
 </style>

@@ -13,20 +13,63 @@
 			on creating possibilities to connect the performer with the audience through a live
 			performance.
 		</p>
-		<p>
-			<b>Award</b><br />
-			2013 National Palace Museum, Qianlong C.H.A.O. New Media Art , interactive installation
-			2013 Digital Art Festival Taipei 2014 The 12th Taoyuan Creation Award 2017 Cooperation
-			project 'Diaspora', Asia contemporary art platform NON Berlin
-		</p>
-		<p>
-			<b>Performance</b><br />
-			2012 Lacking sound Festival Listen 63 , Taipei 2013 Kangding Ray Live In Taipei After
-			Party, Korner, Taipei 2013 Linux Audio Conference, Graz, Austria 2014 (0,0,0,0)
-			exhibiton opening performance, Taipei 2014 Lacking sound Festival Listen 68 , Taipei
-			2015 Chaning, Ausland, Berlin 2016 0ff2n0ff, Tresor Linz, Linz 2017 Emitter Micro,
-			Ausland, Berlin
-		</p>
+		<b>Award / Exhibition</b>
+		<ul>
+			<li class="year">2013</li>
+			<li>
+				National Palace Museum, Qianlong C.H.A.O. New Media Art , interactive installation
+			</li>
+		</ul>
+		<ul>
+			<li class="year">2013</li>
+			<li>Digital Art Festival Taipei</li>
+		</ul>
+		<ul>
+			<li class="year">2014</li>
+			<li>The 12th Taoyuan Creation Award</li>
+		</ul>
+		<ul>
+			<li class="year">2017</li>
+			<li>Cooperation project 'Diaspora', Asia contemporary art platform NON Berlin</li>
+		</ul>
+		<ul>
+			<li class="year">2019</li>
+			<li>
+				PANORAMA Shenzhen New Media Art Festival, Cutural Center Exhibition Gallery, Shenzen
+			</li>
+		</ul>
+		<b>Performance</b>
+		<ul>
+			<li class="year">2012</li>
+			<li>Lacking sound Festival Listen 63 , Taipei</li>
+		</ul>
+		<ul>
+			<li class="year">2013</li>
+			<li>Kangding Ray Live In Taipei After Party, Korner, Taipei</li>
+		</ul>
+		<ul>
+			<li class="year">2013</li>
+			<li>Linux Audio Conference, Graz, Austria</li>
+		</ul>
+		<ul>
+			<li class="year">2014</li>
+			<li>
+				(0,0,0,0) exhibiton opening performance, Taipei 2014 Lacking sound Festival Listen
+				68 , Taipei
+			</li>
+		</ul>
+		<ul>
+			<li class="year">2015</li>
+			<li>Chaning, Ausland, Berlin</li>
+		</ul>
+		<ul>
+			<li class="year">2016</li>
+			<li>0ff2n0ff, Tresor Linz, Linz</li>
+		</ul>
+		<ul>
+			<li class="year">2017</li>
+			<li>Emitter Micro, Ausland, Berlin</li>
+		</ul>
 	</div>
 </template>
 <script>
@@ -34,9 +77,34 @@ export default {};
 </script>
 <style lang="scss" scoped>
 #about-page {
+	font-size: 14px;
 	display: block;
-	text-align: left;
-	width: 80%;
+	text-align: justify;
+	width: 50%;
 	margin: 0 auto;
+	margin-top: 80px;
+	line-height: 1.5em;
+	ul {
+		list-style-type: none;
+	}
+	li {
+		display: inline-block;
+		width: 80%;
+		vertical-align: top;
+	}
+	.year {
+		width: 50px;
+		font-weight: bold;
+	}
+}
+@media only screen and (max-width: 600px) {
+	#about-page {
+		width: 90%;
+		padding: 0;
+	}
+	li,
+	ul {
+		padding: 0;
+	}
 }
 </style>
