@@ -1,5 +1,7 @@
 <template>
-	<div class="hello"></div>
+	<div class="hello">
+		<h1>HSIAO LI CHI</h1>
+	</div>
 </template>
 
 <script>

@@ -18,6 +18,8 @@
 					<div class="vertical-line"></div>
 					<div class="work-title">{{ currentWork.title }} {{ currentWork.year }}</div>
 					<p class="work-content" v-html="currentWork.description"></p>
+					<br />
+					<p class="work-content">Tools: {{ currentWork.tools }}</p>
 					<div class="vertical-line"></div>
 					<a
 						v-if="currentWork.video"
@@ -42,12 +44,15 @@
 					<img class="icon" :src="require('@/assets/icon/arrow-up.png')" />
 				</a>
 				<br />
-				<iframe
-					:src="currentWork.video"
-					frameborder="0"
-					allow="fullscreen"
-					allowfullscreen
-				></iframe>
+				<div class="video-container">
+					<iframe
+						:src="currentWork.video"
+						frameborder="0"
+						allow="fullscreen"
+						allowfullscreen
+					></iframe>
+				</div>
+
 				<br />
 				<a v-scroll-to="'#photo-section'" class="to-next arrow-icon">
 					<img class="icon" :src="require('@/assets/icon/arrow-down.png')" />
@@ -105,6 +110,7 @@ export default {
 
 <style lang="scss" scoped>
 .works-menu {
+	padding-top: 10px;
 	text-align: center;
 	align-self: center;
 	button {
@@ -147,6 +153,7 @@ export default {
 }
 .arrow-icon {
 	padding: 30px;
+	display: inline-block;
 	cursor: pointer;
 	.icon {
 		width: 20px;
@@ -154,7 +161,7 @@ export default {
 	}
 }
 .section-container {
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-content: center;
@@ -162,11 +169,36 @@ export default {
 	#video-child {
 		align-self: center;
 		text-align: center;
+		width: 100%;
 	}
-	iframe {
-		width: 640px;
-		height: 360px;
-		margin: 20px;
+	.video-container {
+		display: inline-block;
+		margin: 0 auto;
+		position: relative;
+		padding-bottom: 23.125%;
+		padding-top: 30px;
+		height: 0;
+		overflow: hidden;
+		width: 50%;
+	}
+	iframe,
+	object,
+	embed {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	@media only screen and (max-width: 760px) {
+		.video-container {
+			position: relative;
+			padding-bottom: 56.25%;
+			padding-top: 30px;
+			height: 0;
+			overflow: hidden;
+			width: 100%;
+		}
 	}
 }
 #photo-section {

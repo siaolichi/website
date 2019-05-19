@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
-		<NavBar />
-		<MainView />
+		<NavBar/>
+		<MainView/>
 	</div>
 </template>
 
@@ -33,6 +33,7 @@ export default {
 	top: 0;
 	left: 0;
 	font-family: 'Chogokuboso Gothic';
+	font-weight: bold;
 	width: 100%;
 }
 </style>

@@ -47,7 +47,7 @@ export default {
 					linkto: 'about'
 				},
 				{
-					title: 'Projects',
+					title: 'Web Projects',
 					linkto: 'projects'
 				},
 				{
@@ -78,7 +78,7 @@ export default {
 			} else {
 				this.showLinks = [];
 				document.getElementById('nav-bar').style.background = 'none';
-				document.getElementById('nav-bar').style.height = '100px';
+				document.getElementById('nav-bar').style.height = '0';
 			}
 		},
 		beforeEnter: function(el) {
@@ -104,9 +104,9 @@ export default {
 <style lang="scss" scoped>
 #nav-bar {
 	z-index: 2;
-	position: absolute;
+	position: fixed;
 	width: 100%;
-	height: 10px;
+	height: 0;
 	top: 0;
 	left: 0;
 	transition: all 0.5s ease;
