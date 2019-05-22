@@ -16,7 +16,12 @@
 				@leave="leave"
 			>
 				<div v-for="item in showLinks" :key="item.title" @click="toggleMenu()">
-					<router-link class="nav-container" :to="item.linkto" tag="div">
+					<router-link
+						class="nav-container"
+						:to="item.linkto"
+						tag="div"
+						@click.native="scrollToTop"
+					>
 						<div class="label">
 							<p>{{ item.title }}</p>
 						</div>
@@ -80,6 +85,11 @@ export default {
 				document.getElementById('nav-bar').style.background = 'none';
 				document.getElementById('nav-bar').style.height = '0';
 			}
+		},
+		scrollToTop() {
+			this.$nextTick(() => {
+				window.scrollTo(0, 0);
+			});
 		},
 		beforeEnter: function(el) {
 			el.style.opacity = 0;

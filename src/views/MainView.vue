@@ -1,13 +1,15 @@
 <template>
 	<div id="main-view">
 		<transition name="fade" mode="out-in">
-			<router-view />
+			<router-view :key="$route.fullPath"></router-view>
 		</transition>
 	</div>
 </template>
 
 <script>
-export default {};
+export default {
+	methods: {}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -92,6 +92,9 @@ export default {
 			imageList: []
 		};
 	},
+	mounted() {
+		console.log('mounted');
+	},
 	methods: {
 		clickMenu(work) {
 			this.showMenu = false;

@@ -10,6 +10,9 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "image-webpack-loader": "^4.6.0",
+    "three": "^0.104.0",
+    "three-fbxloader-offical": "^1.0.0",
+    "three-orbit-controls": "^82.1.0",
     "v-gallery": "^1.2.4",
     "velocity-animate": "^1.5.2",
     "vue": "^2.6.10",
