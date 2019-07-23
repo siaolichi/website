@@ -1,14 +1,17 @@
+const PUBLIC_PATH = 'https://s3.eu-central-1.amazonaws.com/hsiao-li-chi.com/';
+const ASSETS_PATH = process.env.NODE_ENV === 'production' ? PUBLIC_PATH : '/';
+
 module.exports = {
 	configureWebpack: config => {},
 
 	// webpack 链接 API，用于生成和修改 webapck 配置
 	// https://github.com/mozilla-neutrino/webpack-chain
+	publicPath: ASSETS_PATH,
 	chainWebpack: config => {
 		// 因为是多页面，所以取消 chunks，每个页面只对应一个单独的 JS / CSS
 		config.optimization.splitChunks({
 			cacheGroups: {}
 		});
-
 		// 'src/lib' 目录下为外部库文件，不参与 eslint 检测
 		config.module
 			.rule('eslint')
