@@ -2,8 +2,10 @@ const PUBLIC_PATH = 'https://s3.eu-central-1.amazonaws.com/hsiao-li-chi.com/';
 const ASSETS_PATH = process.env.NODE_ENV === 'production' ? PUBLIC_PATH : '/';
 
 module.exports = {
-	configureWebpack: config => {},
-
+	// configureWebpack: config => {},
+	filenameHashing: false,
+	productionSourceMap: false,
+	integrity: false,
 	// webpack 链接 API，用于生成和修改 webapck 配置
 	// https://github.com/mozilla-neutrino/webpack-chain
 	publicPath: ASSETS_PATH,

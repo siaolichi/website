@@ -38,6 +38,18 @@
 				PANORAMA Shenzhen New Media Art Festival, Cutural Center Exhibition Gallery, Shenzen
 			</li>
 		</ul>
+		<ul>
+			<li class="year">2019</li>
+			<li>
+				Beyond Gender, Factory Berlin, Germany
+			</li>
+		</ul>
+		<ul>
+			<li class="year">2019</li>
+			<li>
+				Asia Now, Asian Art Fair, Paris, France
+			</li>
+		</ul>
 		<b>Performance</b>
 		<ul>
 			<li class="year">2012</li>
@@ -73,7 +85,12 @@
 	</div>
 </template>
 <script>
-export default {};
+export default {
+	mounted() {
+		console.log('mounted');
+		this.$store.commit('setDocReady', true);
+	}
+};
 </script>
 <style lang="scss" scoped>
 #about-page {

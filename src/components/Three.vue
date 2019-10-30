@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<h1>HSIAO LI CHI</h1>
 		<div id="container"></div>
 	</div>
 </template>
@@ -29,17 +28,14 @@ export default {
 			camera: undefined,
 			scene: undefined,
 			renderer: undefined,
-			assetsPath: process.env.NODE_ENV === 'production' ? '/static' : '../static',
+			assetsPath: process.env.NODE_ENV === 'production' ? 'https://s3.eu-central-1.amazonaws.com/hsiao-li-chi.com/static' : '../static',
 			clock: undefined,
 			anims: ['Walking'],
 			animations: {}
 		};
 	},
 	mounted() {
-		// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-		let vh = window.innerHeight * 0.01;
-		// Then we set the value in the --vh custom property to the root of the document
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
+		document.documentElement.style.setProperty('--vh', `100%`);
 
 		// require("@/assets/libs/inflate.min.js");
 		this.container = document.getElementById('container');
@@ -59,17 +55,17 @@ export default {
 			// this.scene.background = new THREE.Color(0xa0a0a0);
 			// this.scene.fog = new THREE.Fog(0xa0a0a0, 700, 3000);
 
-			let light = new THREE.HemisphereLight(0xffffff, 0x444444);
+			let light = new THREE.HemisphereLight(0x8de0cd, 0xa3a3ff);
 			light.position.set(0, 200, 0);
 			this.scene.add(light);
 
-			light = new THREE.DirectionalLight(0xffffff);
-			light.position.set(0, 200, 100);
-			light.castShadow = true;
-			light.shadow.camera.top = 180;
-			light.shadow.camera.bottom = -100;
-			light.shadow.camera.left = -120;
-			light.shadow.camera.right = 120;
+			light = new THREE.AmbientLight(0x606060);
+			// light.position.set(0, 500, 500);
+			// light.castShadow = false;
+			// light.shadow.camera.top = 180;
+			// light.shadow.camera.bottom = -100;
+			// light.shadow.camera.left = -120;
+			// light.shadow.camera.right = 120;
 			this.scene.add(light);
 
 			// ground
@@ -90,14 +86,16 @@ export default {
 			const game = this;
 
 			loader.load(
-				`${this.assetsPath}/model/baby/baby-dance.fbx`,
+				`${this.assetsPath}/model/Waving.fbx`,
 				function(object) {
 					object.mixer = new THREE.AnimationMixer(object);
 					game.player.mixer = object.mixer;
 					game.player.root = object.mixer.getRoot();
 
-					object.name = 'FireFighter';
-
+					object.name = 'body';
+					object.scale.multiplyScalar(230);
+					object.position.set(0, -1000, 0);
+					object.rotation.set(-0.2, 0.5, 0);
 					object.traverse(function(child) {
 						if (child.isMesh) {
 							child.material.map = null;
@@ -111,6 +109,7 @@ export default {
 					game.player.mixer.clipAction(object.animations[0]).play();
 
 					game.animate();
+					game.$store.commit('setDocReady', true);
 				},
 				() => {},
 				error => {
@@ -183,7 +182,7 @@ export default {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 98vh;
-	height: calc(var(--vh, 1vh) * 100);
+	height: 100%;
+	z-index: -1;
 }
 </style>

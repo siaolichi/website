@@ -8,7 +8,6 @@
 
 <script>
 export default {
-	methods: {}
 };
 </script>
 
@@ -16,7 +15,8 @@ export default {
 #main-view {
 	position: absolute;
 	width: 100%;
-	min-height: 100vh;
+	margin-top: 120px;
+	min-height: 80vh;
 	.fade-enter-active,
 	.fade-leave-active {
 		transition-duration: 1s;

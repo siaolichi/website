@@ -2,6 +2,9 @@
 	<div id="nav-bar">
 		<div id="dynamic-nav">
 			<div id="open-menu">
+				<router-link to="/" class="site-name">
+					<h1>HSIAO LI CHI</h1>
+				</router-link>
 				<button prevent @click="toggleMenu()">
 					<div>ME</div>
 					<div>NU</div>
@@ -39,34 +42,16 @@
 
 <script>
 import Velocity from 'velocity-animate';
+import { mapState } from 'vuex';
 export default {
 	data() {
 		return {
-			links: [
-				{
-					title: 'Home',
-					linkto: '/'
-				},
-				{
-					title: 'About',
-					linkto: 'about'
-				},
-				{
-					title: 'Web Projects',
-					linkto: 'projects'
-				},
-				{
-					title: 'Works',
-					linkto: 'works'
-				},
-				{
-					title: 'Contact',
-					linkto: 'contact'
-				}
-			],
 			showLinks: [],
 			openMenu: false
 		};
+	},
+	computed: {
+		...mapState(['links'])
 	},
 	methods: {
 		toggleMenu() {
@@ -78,12 +63,12 @@ export default {
 			this.openMenu = !this.openMenu;
 			if (this.openMenu) {
 				this.showLinks = this.links;
-				document.getElementById('nav-bar').style.background = 'rgba(255, 255, 255, 0.8)';
+				// document.getElementById('nav-bar').style.background = 'rgba(255, 255, 255, 0.8)';
 				document.getElementById('nav-bar').style.height = '100vh';
 			} else {
 				this.showLinks = [];
-				document.getElementById('nav-bar').style.background = 'none';
-				document.getElementById('nav-bar').style.height = '0';
+				// document.getElementById('nav-bar').style.background = 'none';
+				document.getElementById('nav-bar').style.height = '80px';
 			}
 		},
 		scrollToTop() {
@@ -115,15 +100,15 @@ export default {
 #nav-bar {
 	z-index: 2;
 	position: fixed;
-	width: 100%;
-	height: 0;
+	width: 100vw;
+	-webkit-backface-visibility: hidden;
+	height: 80px;
 	top: 0;
 	left: 0;
 	transition: all 0.5s ease;
-	background: rgba(255, 255, 255, 0);
 	#dynamic-nav {
-		float: right;
-		width: 170px;
+		width: 100vw;
+		background: rgba(255, 255, 255, 0.6);
 	}
 }
 .nav-container {
@@ -137,7 +122,7 @@ export default {
 		border: none;
 		background: none;
 		padding: 0;
-		display: inline-block;
+		// display: inline-block;
 		vertical-align: middle;
 		width: 15px;
 		margin: 0 auto;
@@ -160,18 +145,23 @@ export default {
 	}
 }
 #open-menu {
-	width: 100%;
-	height: 100%;
+	display: flex;
 	button {
 		background: none;
 		border: none;
-		width: 100%;
+		// width: 40%;
 		height: 100%;
 		text-align: right;
-		margin-bottom: 20px;
-		margin-top: 20px;
-		padding-right: 20px;
+		margin: 20px;
 		font-size: 20px;
+		color: black;
+	}
+	.site-name {
+		// margin: 20px;
+		color: black;
+		width: 80%;
+		height: 100%;
+		text-decoration: none;
 	}
 }
 button:focus {
@@ -193,7 +183,12 @@ button:focus {
 @media only screen and (max-width: 760px) {
 	.label {
 		opacity: 1 !important;
-		display: inline-block;
+		// display: inline-block;
+	}
+}
+@media only screen and (min-width: 760px) {
+	#nav-bar {
+		display: none;
 	}
 }
 </style>

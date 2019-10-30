@@ -5,17 +5,26 @@
 			<ResponsePending />
 		</div>
 		<div id="sound-box"></div>
-		<input
-			v-model="chat.user_sentence"
-			class="form-control form-control-lg"
-			type="text"
-			placeholder="talk with me here"
-			@keyup.enter="requestResponse()"
-		/>
+		<div v-if="docReady === true" class="input-footer">
+			<div class="input-wrapper">
+				<input
+					v-model="chat.user_sentence"
+					class="text-input"
+					type="text"
+					placeholder="talk with me here"
+					autofocus
+					@keyup.enter="requestResponse()"
+				/>
+			</div>
+			<button class="send-button" @click="requestResponse()">
+				<img src="../assets/icon/send.png" alt="send" />
+			</button>
+		</div>
 	</div>
 </template>
 <script>
 import ResponsePending from './ResponsePrending';
+import { mapState } from 'vuex';
 export default {
 	name: 'Capsule1',
 	components: {
@@ -30,12 +39,16 @@ export default {
 			WaitingForResponse: false
 		};
 	},
+	computed: {
+		...mapState(['docReady'])
+	},
 	mounted() {
 		this.getSoundResponse(this.chat.respond);
 	},
 
 	methods: {
 		getSoundResponse(data) {
+			console.log('send sound request!');
 			this.axios
 				.post(`${process.env.VUE_APP_API_URI}/sound`, {
 					generate_sound: data
@@ -50,7 +63,7 @@ export default {
 		requestResponse() {
 			const vm = this;
 			console.log('got!');
-			document.querySelector('.form-control').value = '';
+			document.querySelector('.text-input').value = '';
 			vm.WaitingForResponse = true;
 			this.axios
 				.post(`${process.env.VUE_APP_API_URI}/response`, {
@@ -73,24 +86,97 @@ export default {
 	height: calc(var(--vh, 1vh) * 90);
 	margin: auto;
 }
-.form-control {
-	bottom: 50px;
-	left: 20%;
-	position: fixed;
-	text-align: left;
-	size: 3em;
-	height: 3em;
-	width: 60%;
-	margin: auto;
-}
+
+
 #respond {
-	font-family: 'Chogokuboso Gothic';
+	font-family: 'Montserrat', sans-serif;
+	margin-top: 10%;
 	font-weight: 500;
-	font-size: 120px;
+	font-size: 30px;
 	text-align: left;
 }
 
-.sound-box {
+.input-footer {
+	bottom: 50px;
+	left: 20%;
+	position: fixed;
+	width: 60%;
+}
+.input-wrapper {
+	display: inline-block;
+	border: rgb(225, 247, 246) solid 2px;
+	border-radius: 1.5em;
+	width: calc(90% - 50px);
+}
+.text-input {
+	text-align: left;
+	size: 4em;
+	height: 4em;
+	width: 94.5%;
+	background: rgb(172, 225, 222);
+	border-radius: 1em;
+	margin: 2.5%;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+	-webkit-animation-name: swipe-in; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+	animation-name: swipe-in;
+	animation-duration: 4s;
+	border: none;
+}
+.send-button {
+	width: 50px;
+	height: 50px;
+	margin: 2.5%;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+	border: none;
+	background: none;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes swipe-in {
+	from {
+		background-color: none;
+		width: 0;
+		border: none;
+	}
+	to {
+		background-color: rgb(172, 225, 222);
+		width: 90%;
+		border: none;
+	}
+}
+
+/* Standard syntax */
+@keyframes swipe-in {
+	from {
+		background-color: none;
+		width: 0;
+		border: none;
+	}
+	to {
+		background-color: rgb(172, 225, 222);
+		width: 90%;
+		border: none;
+	}
+}
+
+#sound-box {
 	display: none;
+}
+img{
+	background: none;
+}
+@media only screen and (max-width: 600px) {
+	.input-footer {
+		width: 90%;
+		left: 8%;
+	}
 }
 </style>
