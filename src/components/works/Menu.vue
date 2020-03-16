@@ -56,7 +56,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,700&display=swap');
 a {
 	  text-decoration: none;
 	//   background-color:lawngreen;

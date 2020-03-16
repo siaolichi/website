@@ -18,15 +18,19 @@
 
 <style lang="scss" scoped>
     .vimeo-wrapper {
+        @media only screen and (min-width: 720px) {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
-            // pointer-events: none;
+            pointer-events: none;
             overflow: hidden;
-        
+        }
+        width: 100%;
+        position: relative;
+        margin-top: 100px;
             iframe {
                 width: 100vw;
                 height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */

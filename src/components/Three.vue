@@ -42,6 +42,11 @@ export default {
 		this.clock = new THREE.Clock();
 		this.init();
 	},
+	destroyed() {
+		window.removeEventListener('resize', ()=>{
+                console.log("Remove scroll")
+			});
+	},
 	methods: {
 		init() {
 			this.camera = new THREE.PerspectiveCamera(

@@ -15,7 +15,7 @@ export default {
 #main-view {
 	position: absolute;
 	width: 100%;
-	margin-top: 120px;
+	// margin-top: 120px;
 	min-height: 80vh;
 	.fade-enter-active,
 	.fade-leave-active {

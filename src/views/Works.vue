@@ -5,14 +5,11 @@
 </template>
 
 <script>
-import worksJson from '@/assets/works.json';
-export default {
-	name: 'Works',
-}
 </script>
 
 <style lang="scss" scoped>
 #works-page {
+	margin-top: 120px;
 	min-height: 80vh;
 }
 </style>

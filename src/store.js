@@ -7,14 +7,10 @@ export default new Vuex.Store({
 	state: {
 		docReady: false,
 		links: [
-			{
-				title: 'Home',
-				linkto: '/'
-			},
-			{
-				title: 'About',
-				linkto: '/about'
-			},
+			// {
+			// 	title: 'About',
+			// 	linkto: '/about'
+			// },
 			// {
 			// 	title: 'Web Projects',
 			// 	linkto: 'projects'
@@ -28,9 +24,13 @@ export default new Vuex.Store({
 				linkto: '/blog'
 			},
 			{
-				title: 'Contact',
-				linkto: '/contact'
+				title: 'Home',
+				linkto: '/'
 			}
+			// {
+			// 	title: 'Contact',
+			// 	linkto: '/contact'
+			// }
 		]
 	},
 	mutations: {

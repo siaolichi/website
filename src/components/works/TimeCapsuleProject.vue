@@ -1,18 +1,18 @@
 <template>
     <div class="work-container">
         <Three />
-		<Chatbot />
+		<ChatbotFooter />
     </div>
 </template>
 
 <script>
 import Three from '@/components/Three.vue';
-import Chatbot from '@/components/Chatbot.vue';
+import ChatbotFooter from '@/components/ChatbotFooter.vue';
 export default {
     name: 'TimeCapsuleProject',
     components: {
     Three,
-    Chatbot
+    ChatbotFooter
 }
     
 }

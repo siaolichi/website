@@ -84,6 +84,12 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+* {
+	box-sizing: border-box;
+}
+
 html, body{  
 	height: 100%;  
 	padding: 0;  
@@ -95,8 +101,7 @@ html, body{
 	padding: 0;
 	top: 0;
 	left: 0;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
 	width: 100%;
 	.loading-modal{
 		display: flex;

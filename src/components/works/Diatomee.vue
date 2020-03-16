@@ -64,19 +64,26 @@
 </script>
 
 <style lang="scss" scoped>
+    @import "@/assets/libs/variables.scss";
     .work-container{
         height: 100%;
+         @media only screen and (max-width: 720px) {
+            .open-button,.close-button {
+                display: hidden;
+            }
+        }
         .open-button,.close-button {
-            background: rgba($color: #fff, $alpha: 0.5);
+            background: $white-background-color;
             border: none;
             font-weight: bold;
             font-size: 20px;
-            float: right;
+            // float: right;
             width: 60px;
             height: 60px;
             margin: 30px;
             border-radius: 30px;
             z-index: 2;
+
         }
         .more-detail {
             display: flex;
@@ -86,7 +93,7 @@
             align-items: stretch;
         }
         .description {
-            background: rgba($color: #fff, $alpha: 0.5);
+            background: $white-background-color;
             font-size: 12px;
             margin: 20px;
             padding: 20px;

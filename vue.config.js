@@ -1,19 +1,12 @@
 const PUBLIC_PATH = 'https://s3.eu-central-1.amazonaws.com/hsiao-li-chi.com/';
 const ASSETS_PATH = process.env.NODE_ENV === 'production' ? PUBLIC_PATH : '/';
-
 module.exports = {
 	// configureWebpack: config => {},
 	filenameHashing: false,
 	productionSourceMap: false,
 	integrity: false,
-	// webpack 链接 API，用于生成和修改 webapck 配置
-	// https://github.com/mozilla-neutrino/webpack-chain
 	publicPath: ASSETS_PATH,
 	chainWebpack: config => {
-		// 因为是多页面，所以取消 chunks，每个页面只对应一个单独的 JS / CSS
-		config.optimization.splitChunks({
-			cacheGroups: {}
-		});
 		// 'src/lib' 目录下为外部库文件，不参与 eslint 检测
 		config.module
 			.rule('eslint')
@@ -29,14 +22,31 @@ module.exports = {
 			})
 			.end();
 	},
-
+	configureWebpack: {
+		module: {
+			rules: [
+				{
+					test: /\.(glsl|vs|fs)$/,
+					loader: 'shader-loader',
+					options: {
+						glsl: {
+							chunkPath: Promise.resolve('/glsl/chunks')
+						}
+					}
+				}
+			]
+		},
+		optimization: {
+			splitChunks: false
+		}
+	},
 	// 配置高于chainWebpack中关于 css loader 的配置
 	css: {
 		// 是否开启支持 foo.module.css 样式
 		modules: false,
 
 		// 是否使用 css 分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用 <style> 方式内联至 html 文件中
-		extract: true,
+		extract: false,
 
 		// 是否构建样式地图，false 将提高构建速度
 		sourceMap: false,

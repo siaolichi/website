@@ -5,6 +5,9 @@ import Home from './views/Home.vue';
 Vue.use(Router);
 
 const router = new Router({
+	scrollBehavior(to, from, savedPosition) {
+		return { x: 0, y: 0 };
+	},
 	routes: [
 		{
 			path: '/',
@@ -21,7 +24,6 @@ const router = new Router({
 		},
 		{
 			path: '/works',
-			name: 'works',
 			component: () => import('./views/Works.vue'),
 			children: [
 				{
@@ -84,11 +86,11 @@ const router = new Router({
 			},
 			component: () => import('./views/Works.vue')
 		},
-		{
-			path: '/projects',
-			name: 'projects',
-			component: () => import('./views/Projects.vue')
-		},
+		// {
+		// 	path: '/projects',
+		// 	name: 'projects',
+		// 	component: () => import('./views/Projects.vue')
+		// },
 		{
 			path: '/contact',
 			name: 'contact',

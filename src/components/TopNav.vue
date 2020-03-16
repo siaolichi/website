@@ -1,10 +1,13 @@
 <template>
 	<div class="top-nav">
-		<router-link to="/">
+		<!-- <router-link to="/">
 			<h1 class="site-name">HSIAO LI CHI</h1>
-		</router-link>
+		</router-link> -->
 		<div v-for="item in showLink" :key="item.title" class="link-button">
-			<router-link :to="item.linkto" class="link-text topBotomBordersOut">{{ item.title }}</router-link>
+			<router-link 
+			:to="item.linkto" 
+			class="link-text topBotomBordersOut"
+			>{{ item.title }}</router-link>
 		</div>
 	</div>
 </template>
@@ -22,8 +25,6 @@ export default {
 	},
 	mounted() {
 		this.showLink = this.links;
-		this.showLink.shift();
-		console.log(this.showLink);
 	}
 };
 </script>
@@ -38,14 +39,16 @@ export default {
 	-o-transition: background-color 1s ease-out;
 	transition: background-color 1s ease-out;
 	position: fixed;
+	z-index: 4;
 	h1 {
 		display: inline-block;
 	}
 	.link-button {
-		display: inline-block;
+		// display: inline-block;
 		margin: 20px;
 		vertical-align: bottom;
 		text-align: center;
+		float: right;
 	}
 	.site-name {
 		display: inline-block;
@@ -107,7 +110,7 @@ export default {
 	z-index: 0;
 }
 .top-nav:hover{
-	background-color: rgba(255,255,255,0.2);
+	background-color: rgba(255,255,255,0.8);
 }
 
 </style>
