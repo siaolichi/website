@@ -28,7 +28,6 @@ export default {
 			camera: undefined,
 			scene: undefined,
 			renderer: undefined,
-			assetsPath: process.env.NODE_ENV === 'production' ? 'https://s3.eu-central-1.amazonaws.com/hsiao-li-chi.com/static' : '../static',
 			clock: undefined,
 			anims: ['Walking'],
 			animations: {}
@@ -43,9 +42,9 @@ export default {
 		this.init();
 	},
 	destroyed() {
-		window.removeEventListener('resize', ()=>{
-                console.log("Remove scroll")
-			});
+		window.removeEventListener('resize', () => {
+			console.log('Remove scroll');
+		});
 	},
 	methods: {
 		init() {

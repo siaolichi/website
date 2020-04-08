@@ -1,26 +1,23 @@
 <template>
 	<div id="nav-bar">
-			<div class="open-menu">
-				<!-- <router-link to="/" class="site-name">
+		<div class="open-menu">
+			<!-- <router-link to="/" class="site-name">
 					<h1>HSIAO LI CHI</h1>
 				</router-link> -->
-				<button class="menu-button" prevent @click="toggleMenu()">
-					<div>ME</div>
-					<div>NU</div>
-				</button>
+			<button class="menu-button" prevent @click="toggleMenu()">
+				<div>ME</div>
+				<div>NU</div>
+			</button>
+		</div>
+		<div class="label-wrapper">
+			<div v-for="item in showLinks" :key="item.title" @click="toggleMenu()">
+				<router-link :to="item.linkto" tag="div">
+					<div class="label">
+						<p>{{ item.title }}</p>
+					</div>
+				</router-link>
 			</div>
-			<div class="label-wrapper">
-				<div v-for="item in showLinks" :key="item.title" @click="toggleMenu()">
-					<router-link
-						:to="item.linkto"
-						tag="div"
-					>
-						<div class="label">
-							<p>{{ item.title }}</p>
-						</div>
-					</router-link>
-				</div>
-			</div>
+		</div>
 	</div>
 </template>
 
@@ -39,7 +36,7 @@ export default {
 	},
 	mounted() {
 		window.scrollBy({ top: 0, left: 0, behavior: 'smooth' });
-		console.log("scroll")
+		console.log('scroll');
 	},
 	methods: {
 		toggleMenu() {
@@ -99,7 +96,7 @@ export default {
 	}
 	.label-wrapper {
 		width: 100%;
-		height: calc( 100% - 80px );
+		height: calc(100% - 80px);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -107,7 +104,7 @@ export default {
 		margin: auto;
 		.label {
 			width: 60%;
-			margin : 30px;
+			margin: 30px;
 			cursor: pointer;
 			vertical-align: middle;
 			height: 25px;

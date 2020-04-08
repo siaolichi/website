@@ -2,18 +2,18 @@
 	<div id="works-menu">
 		<!-- <transition name="fade" mode="out-in"> -->
 		<div class="middle-line"></div>
-		<div class="work-section"  v-for="work in works" :key="work.id">
+		<div v-for="work in works" :key="work.id" class="work-section">
 			<router-link :to="'/works/' + work.id">
 				<div class="menu-work-name">
 					<div class="work-title">
 						<div class="title">
-							<div>{{work.year}}</div>
+							<div>{{ work.year }}</div>
 							<div>{{ work.title }}</div>
 						</div>
 						<div class="empty-space"></div>
 					</div>
 				</div>
-				<div class="work-photo" :style="{'backgroundImage': getImgUrl(work)}"></div>
+				<div class="work-photo" :style="{ backgroundImage: getImgUrl(work) }"></div>
 			</router-link>
 		</div>
 		<!-- </transition> -->
@@ -49,7 +49,7 @@ export default {
 			}
 		},
 		getImgUrl(work) {
-			return 'url('+require('../../assets/images/'+work.id+'/'+work.photos[0])+')'
+			return 'url(' + require('../../assets/images/' + work.id + '/' + work.photos[0]) + ')';
 		}
 	}
 };
@@ -57,7 +57,7 @@ export default {
 
 <style lang="scss" scoped>
 a {
-	  text-decoration: none;
+	text-decoration: none;
 	//   background-color:lawngreen;
 }
 #works-menu {
@@ -67,21 +67,21 @@ a {
 	height: 3600px;
 	width: 100%;
 	.middle-line {
-		height:100%;
+		height: 100%;
 		width: 1px;
 		background-color: rgb(202, 202, 202);
 		position: absolute;
 		top: 100px;
 		left: 15%;
 	}
-	.work-section{
+	.work-section {
 		height: 300px;
 		width: 100%;
 		position: relative;
 		// margin-top: 200px;
 		margin-bottom: 200px;
 		// background-color: #fff;
-		.work-photo{
+		.work-photo {
 			width: 100%;
 			height: 270px;
 			display: inline-block;
@@ -95,20 +95,20 @@ a {
 			transition: 1s ease;
 		}
 	}
-	.work-section:hover .work-photo{ 
+	.work-section:hover .work-photo {
 		animation-name: shining;
 		top: 10px;
 		width: 85%;
 		left: 5%;
 		height: 150%;
 	}
-	.menu-work-name{
+	.menu-work-name {
 		width: 100%;
 		.work-title {
 			height: 300px;
 			display: flex;
 			justify-content: center;
-			align-items:flex-start;
+			align-items: flex-start;
 			vertical-align: middle;
 			.title {
 				font-family: 'Josefin Sans', sans-serif;
@@ -122,7 +122,7 @@ a {
 				background-color: rgba($color: white, $alpha: 0.3);
 				z-index: 2;
 			}
-			.empty-space{
+			.empty-space {
 				width: 30%;
 				height: 100%;
 				border: black solid 0px;
@@ -130,17 +130,31 @@ a {
 		}
 	}
 	@keyframes shining {
-		0%   {opacity: 0;}
-		50% {opacity: 1;}
-		100% {opacity: 0;}
+		0% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+		}
 	}
 	@keyframes rolling-down {
-		0%   {width: 0px; opacity: 1;}
-		50% {width: 100%; opacity: 1;}
-		100% {width: 0px; opacity: 1;}
+		0% {
+			width: 0px;
+			opacity: 1;
+		}
+		50% {
+			width: 100%;
+			opacity: 1;
+		}
+		100% {
+			width: 0px;
+			opacity: 1;
+		}
 	}
 }
 @media only screen and (max-width: 760px) {
-
 }
 </style>

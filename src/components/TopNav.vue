@@ -3,11 +3,12 @@
 		<!-- <router-link to="/">
 			<h1 class="site-name">HSIAO LI CHI</h1>
 		</router-link> -->
-		<div v-for="item in showLink" :key="item.title" class="link-button">
-			<router-link 
-			:to="item.linkto" 
-			class="link-text topBotomBordersOut"
-			>{{ item.title }}</router-link>
+		<div class="nav-comtainer">
+			<div v-for="item in showLink" :key="item.title" class="link-button">
+				<router-link :to="item.linkto" class="link-text topBotomBordersOut">{{
+					item.title
+				}}</router-link>
+			</div>
 		</div>
 	</div>
 </template>
@@ -40,15 +41,20 @@ export default {
 	transition: background-color 1s ease-out;
 	position: fixed;
 	z-index: 4;
+	.nav-comtainer {
+		float: right;
+		height: 100%;
+		display: flex;
+		align-items: center;
+	}
 	h1 {
 		display: inline-block;
 	}
 	.link-button {
-		// display: inline-block;
+		display: inline-block;
 		margin: 20px;
 		vertical-align: bottom;
 		text-align: center;
-		float: right;
 	}
 	.site-name {
 		display: inline-block;
@@ -100,8 +106,8 @@ export default {
 .nav-background {
 	transition: all 1s;
 	opacity: 0;
-	background: rgb(255,255,255);
-	background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+	background: rgb(255, 255, 255);
+	background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
 	width: 100%;
 	height: 120px;
 	position: fixed;
@@ -109,8 +115,7 @@ export default {
 	top: 0px;
 	z-index: 0;
 }
-.top-nav:hover{
-	background-color: rgba(255,255,255,0.8);
+.top-nav:hover {
+	background-color: rgba(255, 255, 255, 0.8);
 }
-
 </style>

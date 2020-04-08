@@ -8,38 +8,34 @@
 				<div class="description">
 					<h1>{{ title }}</h1>
 					<p>{{ year }}</p>
-					<br />
-					What’s the image of AI in our mind? Maybe cool, be dangerous, be marvelous, but
-					it can also be friendly, and cute. Like Doraemon.
-					<br />
-					Alan Turing said that he design a machine like a child, not an adult. He also
-					argued that it might be good if his child computer acted randomly, at least some
-					of that time.
-					<br />
-					Take it easy, and make everything possible. that’s what my project want to
-					achieve.
-
-					<br />This newspaper is written by my little AI journalist. Like most of three
-					year old children, it read lot’s of fairytale and children’s books. Such like
-					Grimm, one thousand and one night, also fairytale from japan, brazil. It will
-					keep on reading lot’s fairytale. It is going to discover the world through its
-					tiny digital eyes, and share with people what it saw in the newspaper and
-					website.
-					<br />
-					<br />
-					reference:
-					<br />
-					In the machine learning part, I use the "Story teller" by Ryan Kiros
-					<br />https://github.com/ryankiros/neural-storyteller
-					<br />
-					<br />
-					<a
-						class="link"
-						style="font-weight: bold; font-size: 12pt; color: #000;"
-						href="https://my-tiny-news.hsiao-li-chi.com"
-						target="_blank"
-						>Website
-					</a>
+					<p>
+						decentralized, pseudonymous, open and transparent, are known as features of
+						blockchain.<br />
+						In the centralized system, only the bank or government can see what you are
+						doing.<br />
+						But in the decentralized system, since blockchains are transparent, every
+						action in the ledger can be easily checked and viewed.<br />
+						The most crucial elements are addresses. everything we do in the blockchain
+						is related to address, a 27-34 digit code consisting of letters and
+						numbers.<br /><br />
+						There are three groups of people have the addresses:<br />
+						Miner, Intermediaries, for example, the virtual currency exchange or
+						contract, and the general user.<br />
+						In some cases like the general user who wants to use cryptocurrency as a
+						payment method, how many of them should we treat as our personal data?<br />
+						These bunch of addresses is not only exiting in blockchain but also spread
+						on the internet.<br />
+						<br />
+						This work begins with a cup of coffee and a crypto kitty. To buy a cup of
+						coffee and a crypto kitty, how many addressed have been connected, and how
+						many addresses will be connected in the future?  How many of those addresses
+						will be found on the internet and how many of them are the real user, or
+						even be found the real personal data somewhere on the internet? How much
+						information can we get if we only google it?<br />
+						I visualize it, google it, checking the website.<br />
+						Every activity, transaction, contract we found from this work are already
+						spread, stored, and couldn't be erased from the internet.<br />
+					</p>
 				</div>
 				<div class="gallery">
 					<v-gallery :images="imageList"></v-gallery>
@@ -59,7 +55,7 @@ export default {
 	},
 	data() {
 		return {
-			...worksJson[2],
+			...worksJson[0],
 			showDescription: true,
 			showPhotos: true,
 			imageList: []

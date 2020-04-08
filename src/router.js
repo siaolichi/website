@@ -5,6 +5,7 @@ import Home from './views/Home.vue';
 Vue.use(Router);
 
 const router = new Router({
+	// eslint-disable-next-line no-unused-vars
 	scrollBehavior(to, from, savedPosition) {
 		return { x: 0, y: 0 };
 	},
@@ -30,6 +31,11 @@ const router = new Router({
 					path: '',
 					name: 'WorkMenu',
 					component: () => import('./components/works/Menu.vue')
+				},
+				{
+					path: '202001',
+					name: 'CoffeeAndKitty',
+					component: () => import('./components/works/CoffeeAndKitty.vue')
 				},
 				{
 					path: '201901',
@@ -86,11 +92,11 @@ const router = new Router({
 			},
 			component: () => import('./views/Works.vue')
 		},
-		// {
-		// 	path: '/projects',
-		// 	name: 'projects',
-		// 	component: () => import('./views/Projects.vue')
-		// },
+		{
+			path: '/projects',
+			name: 'projects',
+			component: () => import('./views/Projects.vue')
+		},
 		{
 			path: '/contact',
 			name: 'contact',

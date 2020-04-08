@@ -7,14 +7,14 @@ export default new Vuex.Store({
 	state: {
 		docReady: false,
 		links: [
-			// {
-			// 	title: 'About',
-			// 	linkto: '/about'
-			// },
-			// {
-			// 	title: 'Web Projects',
-			// 	linkto: 'projects'
-			// },
+			{
+				title: 'Home',
+				linkto: '/'
+			},
+			{
+				title: 'Web Projects',
+				linkto: 'projects'
+			},
 			{
 				title: 'Works',
 				linkto: '/works'
@@ -22,11 +22,11 @@ export default new Vuex.Store({
 			{
 				title: 'Blog',
 				linkto: '/blog'
-			},
-			{
-				title: 'Home',
-				linkto: '/'
 			}
+			// {
+			// 	title: 'About',
+			// 	linkto: '/about'
+			// },
 			// {
 			// 	title: 'Contact',
 			// 	linkto: '/contact'

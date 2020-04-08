@@ -30,17 +30,17 @@ export default {
 		this.container = document.getElementById('title-container');
 
 		await this.init();
-		if(this.text == undefined) {
-			setTimeout(()=>{
-				console.log("wait for reload.");
-				document.addEventListener( 'mousemove', this.moveMouse, false );
-				window.addEventListener( 'resize', this.onWindowResize, false );
+		if (this.text == undefined) {
+			setTimeout(() => {
+				console.log('wait for reload.');
+				document.addEventListener('mousemove', this.moveMouse, false);
+				window.addEventListener('resize', this.onWindowResize, false);
 			}, 3);
 		}
 	},
 	destroyed() {
-		window.removeEventListener('resize', this.onWindowResize );
-		document.removeEventListener( 'mousemove', this.moveMouse );
+		window.removeEventListener('resize', this.onWindowResize);
+		document.removeEventListener('mousemove', this.moveMouse);
 	},
 	methods: {
 		async init() {
@@ -56,10 +56,10 @@ export default {
 			this.scene = new THREE.Scene();
 
 			// var noiseTexture = new THREE.TextureLoader().load( require('../assets/images/shaders/cloud.png') );
-			// noiseTexture.wrapS = noiseTexture.wrapT = THREE.RepeatWrapping; 
-				
+			// noiseTexture.wrapS = noiseTexture.wrapT = THREE.RepeatWrapping;
+
 			// var waterTexture = new THREE.TextureLoader().load( require('../assets/images/shaders/water.jpg') );
-			// waterTexture.wrapS = waterTexture.wrapT = THREE.RepeatWrapping; 
+			// waterTexture.wrapS = waterTexture.wrapT = THREE.RepeatWrapping;
 			// vm.textUniforms = {
 			// 	baseTexture: 	{ type: "t", value: waterTexture },
 			// 	baseSpeed: 		{ type: "f", value: 1.15 },
@@ -69,18 +69,18 @@ export default {
 			// 	time: 			{ type: "f", value: 1.0 }
 			// };
 			vm.textUniforms = {
-				u_time: { type: "f", value: 0.0 },
-				u_resolution: { type: "v2", value: new THREE.Vector2() },
-				u_mouse: { type: "v2", value: new THREE.Vector2() },
-				u_complex: { type: "b", value: false }
+				u_time: { type: 'f', value: 0.0 },
+				u_resolution: { type: 'v2', value: new THREE.Vector2() },
+				u_mouse: { type: 'v2', value: new THREE.Vector2() },
+				u_complex: { type: 'b', value: false }
 			};
 			const titleShader = new THREE.ShaderMaterial({
 				uniforms: vm.textUniforms,
 				vertexShader: require('../assets/shaders/titleVert.vs'),
-				fragmentShader: require('../assets/shaders/titleFrag.vs'),
-			})
+				fragmentShader: require('../assets/shaders/titleFrag.vs')
+			});
 			titleShader.transparent = true;
-	
+
 			titleShader.side = THREE.DoubleSide;
 
 			// var flatGeometry = new THREE.PlaneGeometry( 100, 100 );
@@ -90,7 +90,8 @@ export default {
 
 			//Text
 			let loader = new THREE.FontLoader();
-			let typeface = 'https://dl.dropboxusercontent.com/s/bkqic142ik0zjed/swiss_black_cond.json?';
+			let typeface =
+				'https://dl.dropboxusercontent.com/s/bkqic142ik0zjed/swiss_black_cond.json?';
 			await loader.load(typeface, function(font) {
 				let xMid;
 				let color = 0x00;
@@ -100,8 +101,8 @@ export default {
 					opacity: 0.4,
 					side: THREE.DoubleSide
 				});
-				
-				let message = "Hsiao Li Chi";
+
+				let message = 'Hsiao Li Chi';
 				let shapes = font.generateShapes(message, 100);
 				var geometry = new THREE.TextGeometry(message, {
 					font: font,
@@ -127,7 +128,6 @@ export default {
 			// this.renderer.shadowMap.enabled = true;
 			this.container.appendChild(this.renderer.domElement);
 			this.animate();
-
 		},
 		onWindowResize() {
 			this.camera.aspect = window.innerWidth / window.innerHeight;
@@ -146,18 +146,18 @@ export default {
 			// Main vars
 			let mouseX = event.clientX - offsetX;
 			let mouseY = event.clientY - offsetY;
-			let maxDegree = 20 * Math.PI / 180;
+			let maxDegree = (20 * Math.PI) / 180;
 
 			let rotationZ = 0;
 			if (mouseX < halfWidth) {
-				rotationZ = -1* (halfWidth - mouseX) * (maxDegree / halfWidth);
+				rotationZ = -1 * (halfWidth - mouseX) * (maxDegree / halfWidth);
 			} else {
 				rotationZ = (mouseX - halfWidth) * (maxDegree / halfWidth);
 			}
 
 			let rotationX = 0;
 			if (mouseY < halfHeight) {
-				rotationX = -1* (halfHeight - mouseY) * (maxDegree / halfHeight);
+				rotationX = -1 * (halfHeight - mouseY) * (maxDegree / halfHeight);
 			} else {
 				rotationX = (mouseY - halfHeight) * (maxDegree / halfHeight);
 			}
