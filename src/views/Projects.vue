@@ -57,10 +57,12 @@ export default {
 
 <style lang="scss" scoped>
 #project-page {
+	margin-top: 80px;
 	.section-container {
 		width: 100%;
 		min-height: 100vh;
 		display: flex;
+		flex-wrap: wrap;
 		text-align: center;
 		justify-content: space-evenly;
 		img {

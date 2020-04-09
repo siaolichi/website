@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import Velocity from 'velocity-animate';
 import { mapState } from 'vuex';
 export default {
 	data() {
@@ -103,11 +102,11 @@ export default {
 		flex-direction: column;
 		margin: auto;
 		.label {
-			width: 60%;
+			width: 100%;
 			margin: 30px;
 			cursor: pointer;
 			vertical-align: middle;
-			height: 25px;
+			height: 50px;
 			margin: auto;
 			padding: 0;
 			text-align: right;
