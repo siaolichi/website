@@ -3,41 +3,40 @@
 		<div class="sections-menu">
 			<span
 				class="menu-point"
-				v-bind:class="{active: activeSection == index}"
-				v-on:click="scrollToSection(index)"
+				:class="{ active: activeSection == index }"
+				@click="scrollToSection(index)"
 				v-for="(offset, index) in offsets"
-				v-bind:key="index">
+				:key="index"
+			>
 			</span>
 		</div>
 		<section class="section home">
 			<div class="home-content">
 				<h1><b> Hsiao Li Chi</b></h1>
-				<hr>
+				<hr />
 			</div>
 		</section>
 		<section class="section">
 			<h1>About</h1>
 			<p>
-				Li-Chi Hsiao is a multidisciplinary artist making sound installations and live
-				performances. Using self-made interfaces, her works take on a variety of forms such as
-				Audio-Visual, sound, installations and live performances. Since 2011, she collaborated
-				with sound artist Iang Tu and Chang Yen-Tzu and began to incorporate visual aspects into
-				her work. Her installations create a transfer from body to the visual domain. In 2013,
-				she began to create audiovisual live performances. In her work she often is questioning
-				the relationship between audience and performer, people and herself. Currently, she is
-				attending the program of Art and Media at Berlin University of Art. Her practice focuses
-				on creating possibilities to connect the performer with the audience through a live
-				performance.
+				Hsiao Li-Chi is a multimedia artist graduated from Berlin University of Art, her
+				works take on a variety of forms such as Audio-Visual, sound, installations and live
+				performances. Her works are mostly about the relationship of herself, the internet,
+				and social society. Recently, her works reach the field of artificial intelligence
+				and blockchain, trying to imagine the virtual social activity of nearly future.
 			</p>
 		</section>
 		<section class="section">
-			<Timeline/>
+			<Timeline />
 		</section>
 	</div>
 </template>
 <script>
 import Timeline from '../components/Timeline';
 export default {
+	components: {
+		Timeline,
+	},
 	data() {
 		return {
 			inMove: false,
@@ -46,24 +45,21 @@ export default {
 			touchStartY: 0
 		}
 	},
-	components: {
-		Timeline,
-	},
 	mounted() {
 		console.log('mounted');
 		this.$store.commit('setDocReady', true);
 		this.calculateSectionOffsets();
-    
-		window.addEventListener('DOMMouseScroll', this.handleMouseWheelDOM);  // Mozilla Firefox
+
+		window.addEventListener('DOMMouseScroll', this.handleMouseWheelDOM); // Mozilla Firefox
 		window.addEventListener('mousewheel', this.handleMouseWheel, { passive: false }); // Other browsers
-		
+
 		window.addEventListener('touchstart', this.touchStart, { passive: false }); // mobile devices
 		window.addEventListener('touchmove', this.touchMove, { passive: false }); // mobile devices
 	},
 	destroyed() {
-		window.removeEventListener('mousewheel', this.handleMouseWheel, { passive: false });  // Other browsers
+		window.removeEventListener('mousewheel', this.handleMouseWheel, { passive: false }); // Other browsers
 		window.removeEventListener('DOMMouseScroll', this.handleMouseWheelDOM); // Mozilla Firefox
-		
+
 		window.removeEventListener('touchstart', this.touchStart); // mobile devices
 		window.removeEventListener('touchmove', this.touchMove); // mobile devices
 	},
@@ -71,82 +67,81 @@ export default {
 		calculateSectionOffsets() {
 			let sections = document.getElementsByTagName('section');
 			let length = sections.length;
-			
-			for(let i = 0; i < length; i++) {
+
+			for (let i = 0; i < length; i++) {
 				let sectionOffset = sections[i].offsetTop;
 				this.offsets.push(sectionOffset);
 			}
 		},
 		handleMouseWheel: function(e) {
-		
 			if (e.wheelDelta < 30 && !this.inMove) {
 				this.moveUp();
 			} else if (e.wheelDelta > 30 && !this.inMove) {
 				this.moveDown();
 			}
-				
+
 			e.preventDefault();
 			return false;
-			},
-			handleMouseWheelDOM: function(e) {
-			
+		},
+		handleMouseWheelDOM: function(e) {
 			if (e.detail > 0 && !this.inMove) {
 				this.moveUp();
 			} else if (e.detail < 0 && !this.inMove) {
 				this.moveDown();
 			}
-			
+
 			return false;
 		},
 		moveDown() {
 			this.inMove = true;
 			this.activeSection--;
-				
-			if(this.activeSection < 0) this.activeSection = 0;
-				
+
+			if (this.activeSection < 0) this.activeSection = 0;
+
 			this.scrollToSection(this.activeSection, true);
 		},
 		moveUp() {
 			this.inMove = true;
 			this.activeSection++;
-				
-			if(this.activeSection > this.offsets.length - 1) this.activeSection = this.offsets.length - 1;
-				
+
+			if (this.activeSection > this.offsets.length - 1)
+				this.activeSection = this.offsets.length - 1;
+
 			this.scrollToSection(this.activeSection, true);
 		},
 		scrollToSection(id, force = false) {
-			if(this.inMove && !force) return false;
-			
+			if (this.inMove && !force) return false;
+
 			this.activeSection = id;
 			this.inMove = true;
-			
-			document.getElementsByTagName('section')[id].scrollIntoView({behavior: 'smooth'});
-			
+
+			document.getElementsByTagName('section')[id].scrollIntoView({ behavior: 'smooth' });
+
 			setTimeout(() => {
 				this.inMove = false;
 			}, 400);
 		},
 		touchStart(e) {
 			e.preventDefault();
-			
+
 			this.touchStartY = e.touches[0].clientY;
-			},
-			touchMove(e) {
-			if(this.inMove) return false;
+		},
+		touchMove(e) {
+			if (this.inMove) return false;
 			e.preventDefault();
-			
+
 			const currentY = e.touches[0].clientY;
-			
-			if(this.touchStartY < currentY) {
+
+			if (this.touchStartY < currentY) {
 				this.moveDown();
 			} else {
 				this.moveUp();
 			}
-			
+
 			this.touchStartY = 0;
 			return false;
 		}
-	},
+	}
 };
 </script>
 <style lang="scss" scoped>
@@ -167,7 +162,7 @@ export default {
 		align-items: center;
 		flex-direction: column;
 		margin: auto;
-		&.home{
+		&.home {
 			// font-family: 'Josefin Sans', sans-serif;
 			width: 100%;
 			height: 70vh;
@@ -175,9 +170,9 @@ export default {
 			align-content: center;
 			justify-content: center;
 			display: flex;
-			.home-content{
+			.home-content {
 				width: 100%;
-				h1{
+				h1 {
 					text-align: center;
 					width: 100%;
 					-webkit-animation-name: fade-in; /* Safari 4.0 - 8.0 */
@@ -185,7 +180,7 @@ export default {
 					animation-name: fade-in;
 					animation-duration: 4s;
 				}
-				hr{
+				hr {
 					border: solid black 3px;
 					width: 90%;
 					-webkit-animation-name: swipe-in; /* Safari 4.0 - 8.0 */
@@ -198,18 +193,18 @@ export default {
 	}
 }
 .sections-menu {
-  position: fixed;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+	position: fixed;
+	right: 1rem;
+	top: 50%;
+	transform: translateY(-50%);
 	.menu-point {
 		width: 10px;
 		height: 10px;
-		background-color: #FFF;
+		background-color: #fff;
 		display: block;
 		margin: 1rem 0;
-		opacity: .6;
-		transition: .4s ease all;
+		opacity: 0.6;
+		transition: 0.4s ease all;
 		cursor: pointer;
 		.active {
 			opacity: 1;

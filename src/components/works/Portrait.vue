@@ -1,147 +1,149 @@
 <template>
-    <div class="work-container">
-        <BackgroundVideo :url="video"/>
-        <button class="open-button" v-if="!showDescription" @click="switchDescription">D</button>
-        <button class="close-button" v-else @click="switchDescription">X</button>
-        <transition name="fade" mode="out-in">
-            <div class="more-detail" v-if="showDescription">
-                <div class="description">
-                    <h1>{{title}}</h1>
-                    <p>{{year}}</p>
-                    <p>
-		                A portrait contains the feelings and words of the artist, 
-                        the spirit of the characters in the painting, 
-                        and the viewer's emotional projection from the painting.
-                        <br>
-                        everyone will give it different feedback when they saw a work, so does portrait.
-                        <br>
-                        Especially when I see a certain person in a portrait looks like someone, 
-                        then the painting I am looking at is not just the painting itself, 
-                        but also the connection between the painting and myself.
-                        <br>
-                        But for me, most of time, especially portrait from Europe, 
-                        I feel nothing. I have none connection of it.
-                        <br>
-                        I don’t know why and it bothered for a while. 
-                        So I decide to create a connection between me and the portrait.
-                        <br>
-                        In this work, the characters of the portrait will gradually imitate the facial features and expressions of the viewer. 
-                        In these changes, the viewer's facial expression will also be affected, then the portrait will change again. 
-                        In this forth to back watching and changing, a slow and silent dialogue is formed.
-
-                    </p>
-                </div>
-                <div class="gallery">
-                    <v-gallery :images="imageList" control-title="false"></v-gallery>
-                </div>
-            </div>
-        </transition>
-    </div>
+	<div class="work-container">
+		<BackgroundVideo :url="video" />
+		<button v-if="!showDescription" class="open-button" @click="switchDescription">D</button>
+		<button v-else class="close-button" @click="switchDescription">X</button>
+		<transition name="fade" mode="out-in">
+			<div v-if="showDescription" class="more-detail">
+				<div class="description">
+					<h1>{{ title }}</h1>
+					<p>{{ year }}</p>
+					<p>
+						A portrait contains the feelings and words of the artist, the spirit of the
+						characters in the painting, and the viewer's emotional projection from the
+						painting.
+						<br />
+						everyone will give it different feedback when they saw a work, so does
+						portrait.
+						<br />
+						Especially when I see a certain person in a portrait looks like someone,
+						then the painting I am looking at is not just the painting itself, but also
+						the connection between the painting and myself.
+						<br />
+						But for me, most of time, especially portrait from Europe, I feel nothing. I
+						have none connection of it.
+						<br />
+						I don’t know why and it bothered for a while. So I decide to create a
+						connection between me and the portrait.
+						<br />
+						In this work, the characters of the portrait will gradually imitate the
+						facial features and expressions of the viewer. In these changes, the
+						viewer's facial expression will also be affected, then the portrait will
+						change again. In this forth to back watching and changing, a slow and silent
+						dialogue is formed.
+					</p>
+				</div>
+				<div class="gallery">
+					<v-gallery :images="imageList" control-title="false"></v-gallery>
+				</div>
+			</div>
+		</transition>
+	</div>
 </template>
 
 <script>
-    import worksJson from '@/assets/works.json';
-    import BackgroundVideo from './BackgroundVideo';
-    export default {
-        name: 'Portrait',
-        components:{
-            BackgroundVideo
-        },
-        data(){
-            return{
-                ...worksJson[6],
-                showDescription: true,
-                showPhotos: true,
-                imageList: []
-            }
-        },
-        mounted() {
-		    console.log('mounted', this.title);
-            this.$store.commit('setDocReady', true);
-            for (let photo of this.photos) {
-                console.log(photo);
-                let url = require(`../../assets/images/${this.id}/${photo}`);
-				const item = { title: this.title, url };
-				this.imageList.push(item);
-			}
-        },
-        methods:{
-            switchDescription(){
-                this.showDescription = !this.showDescription;
-            },
-            switchshowPhotos(){
-                this.showPhotos = !this.showPhotos;
-            }
-        }
-        
-    }
+import worksJson from '@/assets/works.json';
+import BackgroundVideo from './BackgroundVideo';
+export default {
+	name: 'Portrait',
+	components: {
+		BackgroundVideo
+	},
+	data() {
+		return {
+			...worksJson[worksJson.map(e => e.id).indexOf('201601')],
+			showDescription: true,
+			showPhotos: true,
+			imageList: []
+		};
+	},
+	mounted() {
+		console.log('mounted', this.title);
+		this.$store.commit('setDocReady', true);
+		for (let photo of this.photos) {
+			console.log(photo);
+			let url = require(`../../assets/images/${this.id}/${photo}`);
+			const item = { title: this.title, url };
+			this.imageList.push(item);
+		}
+	},
+	methods: {
+		switchDescription() {
+			this.showDescription = !this.showDescription;
+		},
+		switchshowPhotos() {
+			this.showPhotos = !this.showPhotos;
+		}
+	}
+};
 </script>
 
 <style lang="scss" scoped>
-    @import "@/assets/libs/variables.scss";
-    .work-container{
-        height: 100%;
-        .open-button,.close-button {
-            background: $white-background-color;
-            border: none;
-            font-weight: bold;
-            font-size: 20px;
-            // float: right;
-            width: 60px;
-            height: 60px;
-            margin: 30px;
-            border-radius: 30px;
-            z-index: 2;
-        }
-        .more-detail {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            height: 100%;
-            align-items: stretch;
-        }
-        .description {
-            background: $white-background-color;
-            font-size: 12px;
-            margin: 20px;
-            padding: 20px;
-            text-align: justify;
-            line-height: 1.5em;
-            font-weight: 900;
-            width: 40%;
-        }
-        .gallery {
-            width: 40%;
-            margin: 20px;
-        }
-        .vimeo-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        
-            iframe {
-                width: 100vw;
-                height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
-                min-height: 100vh;
-                min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-            }
-        }
-        @media only screen and (max-width: 760px) {
-            .description {
-                width: 100%;
-            }
-            .gallery {
-                width: 100%;
-            }
-        }
-    }
+@import '@/assets/libs/variables.scss';
+.work-container {
+	height: 100%;
+	.open-button,
+	.close-button {
+		background: $white-background-color;
+		border: none;
+		font-weight: bold;
+		font-size: 20px;
+		// float: right;
+		width: 60px;
+		height: 60px;
+		margin: 30px;
+		border-radius: 30px;
+		z-index: 2;
+	}
+	.more-detail {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: flex-start;
+		height: 100%;
+		align-items: stretch;
+	}
+	.description {
+		background: $white-background-color;
+		font-size: 12px;
+		margin: 20px;
+		padding: 20px;
+		text-align: justify;
+		line-height: 1.5em;
+		font-weight: 900;
+		width: 40%;
+	}
+	.gallery {
+		width: 40%;
+		margin: 20px;
+	}
+	.vimeo-wrapper {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		pointer-events: none;
+		overflow: hidden;
+
+		iframe {
+			width: 100vw;
+			height: 56.25vw; /* Given a 16:9 aspect ratio, 9/16*100 = 56.25 */
+			min-height: 100vh;
+			min-width: 177.77vh; /* Given a 16:9 aspect ratio, 16/9*100 = 177.77 */
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	@media only screen and (max-width: 760px) {
+		.description {
+			width: 100%;
+		}
+		.gallery {
+			width: 100%;
+		}
+	}
+}
 </style>

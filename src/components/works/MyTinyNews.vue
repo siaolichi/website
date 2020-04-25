@@ -59,7 +59,7 @@ export default {
 	},
 	data() {
 		return {
-			...worksJson[2],
+			...worksJson[worksJson.map(e => e.id).indexOf('201802')],
 			showDescription: true,
 			showPhotos: true,
 			imageList: []

@@ -55,7 +55,7 @@ export default {
 	},
 	data() {
 		return {
-			...worksJson[0],
+			...worksJson[worksJson.map(e => e.id).indexOf('202001')],
 			showDescription: true,
 			showPhotos: true,
 			imageList: []
