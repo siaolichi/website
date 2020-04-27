@@ -1,4 +1,5 @@
 # hsiao-li-chi
+[https://hsiao-li-chi.com](https://hsiao-li-chi.com)
 
 ## Project setup
 ```
@@ -24,6 +25,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
