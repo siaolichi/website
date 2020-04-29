@@ -13,7 +13,7 @@ export default new Vuex.Store({
 			},
 			{
 				title: 'Web Projects',
-				linkto: 'projects'
+				linkto: '/projects'
 			},
 			{
 				title: 'Works',

@@ -100,18 +100,12 @@ const router = new Router({
 		{
 			path: '/contact',
 			name: 'contact',
-			// route level code-splitting
-			// this generates a separate chunk (about.[hash].js) for this route
-			// which is lazy-loaded when the route is visited.
-			component: () => import(/* webpackChunkName: "about" */ './views/Contact.vue')
+			component: () => import('./views/Contact.vue')
 		},
 		{
 			path: '/mini-game',
 			name: 'mini-game',
-			// route level code-splitting
-			// this generates a separate chunk (about.[hash].js) for this route
-			// which is lazy-loaded when the route is visited.
-			component: () => import(/* webpackChunkName: "about" */ './views/MiniGame.vue')
+			component: () => import('./views/MiniGame.vue')
 		}
 	]
 });
