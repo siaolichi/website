@@ -6,7 +6,7 @@
 				<div>
 					<h3>Loka Location</h3>
 					<p>2020</p>
-					<a href="https://loka-location.herokuapp.com/">
+					<a href="https://loka-location.com/">
 						<img :src="require('@/assets/images/websiteImage/loka.png')" />
 					</a>
 					<p class="description">
