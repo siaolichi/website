@@ -11,14 +11,14 @@ const ScrollDrag = ({children, items}) => {
     }, []);
 
     const onMouseUp = () => {
-        console.log('Mouse Up');
+        // console.log('Mouse Up');
         setState((s) => ({...s, isScrolling: false}));
     };
     useEffectListener('mouseup', onMouseUp);
     const onMouseMove = (e, callbackState) => {
         const {clientX, scrollX, isScrolling} = callbackState;
         if (isScrolling) {
-            console.log(ref.current);
+            // console.log(ref.current);
             ref.current.scrollTo = scrollX + e.clientX - clientX;
             // setState((s) => ({...s, scrollX: scrollX + e.clientX - clientX, clientX: e.clientX}));
         }
