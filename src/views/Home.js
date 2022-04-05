@@ -1,44 +1,38 @@
-import React, { useContext } from 'react';
-import { Transition } from 'react-transition-group';
-import { TweenMax } from 'gsap/all';
+import React, { useContext, useRef } from 'react';
+import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 
 import HomeAnimation from '../components/HomeAnimation';
 import { Context } from '../contexts';
 import Spinner from '../components/Spinner';
+import InfoModal from '../components/InfoModal';
+import { margin } from '@mui/material/node_modules/@mui/system';
 
-const startState = { autoAlpha: 0, y: -50 };
+const Home = () => {
+	const { state } = useContext(Context);
+	const infoRef = useRef(null);
 
-const Home = ({ show }) => {
-  const { state } = useContext(Context);
-  return (
-    <Transition
-      unmountOnExit
-      in={show}
-      timeout={1000}
-      onEnter={(node) => TweenMax.set(node, startState)}
-      addEndListener={(node, done) => {
-        TweenMax.to(node, 0.5, {
-          autoAlpha: show ? 1 : 0,
-          y: show ? 0 : 50,
-          onComplete: done,
-        });
-      }}
-    >
-      <div style={backgorundStyle}>
-        {state === false && <Spinner />}
-        <HomeAnimation />
-      </div>
-    </Transition>
-  );
-};
-const backgorundStyle = {
-  background:
-    'linear-gradient(0deg, rgba(189,174,238,1) 0%, rgba(148,233,193,1) 100%)',
-  position: 'fixed',
-  top: '0',
-  left: '0',
-  width: '100vw',
-  height: '100vh',
-  zIndex: '-2',
+	const scrollToBottom = () => {
+		console.log('scroll to buttom');
+		infoRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+	};
+
+	return (
+		<div style={{ overflowX: 'scroll' }}>
+			{state === false && <Spinner />}
+			<HomeAnimation />
+			<KeyboardArrowDownRoundedIcon style={iconStyle} onClick={scrollToBottom} />
+			<div ref={infoRef}>
+				<InfoModal />
+			</div>
+		</div>
+	);
 };
 export default Home;
+
+const iconStyle = {
+	width: '100%',
+	height: '64px',
+	color: 'white',
+	transform: 'translateY(-120px)',
+	cursor: 'pointer'
+};

@@ -1,4 +1,5 @@
 .work-page {
+
     .back-button-container {
         text-decoration: none;
         color: white;
@@ -7,8 +8,10 @@
         line-height: 2rem;
         vertical-align: top;
         display: inline-block;
-        font-family: 'Amatic SC', cursive;
         font-weight: 700;
+        @media only screen and (max-width: 600px)  {
+            margin-top: 50px;
+        }
         .back-button {
             font-size: 2rem;
             vertical-align: top;
@@ -16,11 +19,13 @@
     }
 
     .work-content{
+
         margin: 0 100px 100px 100px;
         color: white;
         @media only screen and (max-width: 600px)  {
             margin: 100px 20px;
         }
+        
         .year{
             font-size: .5rem;
             margin-bottom: 10px;

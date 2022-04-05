@@ -1,32 +1,46 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import './App.scss';
-import '@material/react-material-icon/dist/material-icon.css';
 
-import Art from './views/Art';
+import ArtSliders from './views/ArtSliders';
+import ArtWorkPage from './views/ArtWorkPage';
 import Web from './views/Web';
 import Home from './views/Home';
 import Nav from './components/Nav';
 import { Provider } from './contexts';
 
 function App() {
-  return (
-    <Provider>
-      <Router>
-        <Nav />
-        <Route path='/art-works'>
-          {({ match }) => <Art show={match !== null} />}
-        </Route>
-        <Route path='/web-works'>
-          {({ match }) => <Web show={match !== null} />}
-        </Route>
-        <Route path='/' exact>
-          {({ match }) => <Home show={match !== null} />}
-        </Route>
-      </Router>
-    </Provider>
-  );
+	const location = useLocation();
+	return (
+		<div style={backgorundStyle}>
+			<Provider>
+				<Nav />
+				<TransitionGroup component={null}>
+					<CSSTransition key={location.key} timeout={1000} classNames='fade'>
+						<Routes>
+							<Route path='art-works' exact element={<ArtSliders />} />
+							<Route path='art-works/:id' element={<ArtWorkPage />} />
+							<Route path='web-works' element={<Web />} />
+							<Route path='/' exact element={<Home />} />
+						</Routes>
+					</CSSTransition>
+				</TransitionGroup>
+			</Provider>
+		</div>
+	);
 }
+
+const backgorundStyle = {
+	background: 'linear-gradient(360deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
+	position: 'related',
+	top: '0',
+	left: '0',
+	width: '100vw',
+	height: '100vh',
+	zIndex: '-2',
+	overflowX: 'hidden'
+};
 
 export default App;
