@@ -5,7 +5,7 @@ import ArtCard from '../components/ArtCard';
 import { TransitionGroup } from 'react-transition-group';
 
 import * as works from '../assets/works.js';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ElderlyWomanRoundedIcon from '@mui/icons-material/ElderlyWomanRounded';
 import useEffectListener from '../hooks/useEffectListener';
 
 const cards = works.default;
@@ -70,19 +70,19 @@ const ArtSliders = ({ show }) => {
 						height: '30%',
 						position: 'fixed',
 						width: '60%',
-						left: '10%',
+						left: '20%',
 						top: '100px'
 					}}
 				>
 					<div style={{ marginLeft: targetLeft }}>
-						<ArrowDropDownIcon style={{ color: 'white', fontSize: '3rem' }} />
+						<ElderlyWomanRoundedIcon style={{ color: 'white', fontSize: '3rem' }} />
 					</div>
 					<div ref={targetRef} style={{ borderBottom: '1.5px solid white', height: '10px' }} />
 					<div
 						style={{
 							float: 'left',
 							color: 'white',
-							fontFamily: 'Amatic SC',
+							fontFamily: '"Rock 3D", cursive',
 							fontWeight: '700',
 							fontSize: '1.2rem'
 						}}
@@ -93,7 +93,7 @@ const ArtSliders = ({ show }) => {
 						style={{
 							float: 'right',
 							color: 'white',
-							fontFamily: 'Amatic SC',
+							fontFamily: '"Rock 3D", cursive',
 							fontWeight: '700',
 							fontSize: '1.2rem'
 						}}

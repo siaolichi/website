@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&family=Rock+3D&display=swap');
+@import 'react-awesome-slider/dist/styles.css';
+
 * {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
@@ -25,3 +27,23 @@
   
     transition: opacity 500ms ease-out, transform 700ms ease;
   }
+
+  .awssld {
+    --organic-arrow-thickness: 4px;
+    --organic-arrow-height: 40px;
+    --slider-height-percentage: 60%;
+    --loader-bar-color: #851515;
+    --loader-bar-height: 6px;
+    --control-button-width: 10%;
+    --control-button-height: 25%;
+    --control-button-opacity: 0.5;
+    --control-button-hover-opacity: 0.75;
+    --control-button-background: transparent;
+    --transition-bezier: cubic-bezier(0.5, 0.075, 0.25, 0.95);
+    --slider-transition-duration: 575ms;
+    --organic-arrow-color: #00ff0d !important;
+    --organic-arrow-border-radius: 0;
+    --control-bullet-color: #c4ff94 !important;
+    --control-bullet-active-color: #00ff0d !important;
+    --content-background-color: #00000000 !important;
+  } 
