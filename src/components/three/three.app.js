@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 var APP = {
-	Player: function (renderer) {
+	Player: function (renderer, dom) {
 		renderer.setPixelRatio(window.devicePixelRatio); // TODO: Use player.setPixelRatio()
 		renderer.outputEncoding = THREE.sRGBEncoding;
 
@@ -10,7 +10,6 @@ var APP = {
 
 		var events = {};
 
-		var dom = document.createElement('div');
 		dom.appendChild(renderer.domElement);
 
 		this.dom = dom;

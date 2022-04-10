@@ -22,7 +22,7 @@ const Home = () => {
 	};
 
 	return (
-		<div style={{ overflowX: 'scroll' }} className='page'>
+		<div className='page'>
 			{state === false && <Spinner />}
 			<div ref={pageRef}>
 				<HomeAnimation />

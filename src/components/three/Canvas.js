@@ -16,7 +16,7 @@ const Canvas = ({ children }) => {
 
 		var loader = new THREE.FileLoader();
 		loader.load('app.json', function (text) {
-			var player = new APP.Player(renderer);
+			var player = new APP.Player(renderer, canvaRef.current);
 			player.load(JSON.parse(text));
 			player.setSize(window.innerWidth, window.innerHeight);
 			player.play();
@@ -32,11 +32,18 @@ const Canvas = ({ children }) => {
 
 		return () => {};
 	}, []);
-	return (
-		<div>
-			<div ref={canvaRef} key={-1} style={{ width: '100vw', height: '100vh', position: 'fixed' }} />
-		</div>
-	);
+	return <div ref={canvaRef} key={-1} style={backgorundStyle} />;
 };
 
 export default Canvas;
+
+const backgorundStyle = {
+	background: 'linear-gradient(360deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
+	position: 'fixed',
+	top: '0',
+	left: '0',
+	width: '100vw',
+	height: '100vh',
+	zIndex: '-2',
+	overflowX: 'hidden'
+};
