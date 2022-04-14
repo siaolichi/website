@@ -11,8 +11,7 @@ const InfoModal = ({ modal, setModal }) => {
 						justifyContent: 'center',
 						alignItems: 'center',
 						flexDirection: 'column',
-						height: '100%',
-						padding: '10%'
+						height: '100%'
 					}}
 				>
 					{modal === 'contact' ? (
@@ -29,12 +28,17 @@ const InfoModal = ({ modal, setModal }) => {
 							<div>&#43;&#52;&#57;&#49;&#55;&#55;&#54;&#53;&#53;&#50;&#49;&#54;&#50;</div>
 						</>
 					) : (
-						<p>
-							Hsiao Li-Chi is a multimedia artist graduated from Berlin University of Art, her works take on a variety
-							of forms such as Audio-Visual, sound, installations and live performances. Her works are mostly about the
-							relationship of herself, the internet, and social society. Recently, her works reach the field of
-							artificial intelligence and blockchain, trying to imagine the virtual social activity of nearly future.
-						</p>
+						<div>
+							<p>
+								Hsiao Li-Chi is a multimedia artist graduated from Berlin University of Art, her works take on a variety
+								of forms such as Audio-Visual, sound, installations and live performances.{' '}
+							</p>
+							<p>Her works are mostly about the relationship of herself, the internet, and social society.</p>
+							<p>
+								Recently, her works reach the field of artificial intelligence and blockchain, trying to imagine the
+								virtual social activity of nearly future.
+							</p>
+						</div>
 					)}
 				</div>
 			</div>

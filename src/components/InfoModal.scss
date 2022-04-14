@@ -1,32 +1,24 @@
 .info-modal{
     width: 100vw;
     height: 100vh;
-    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
-    .close-button{
-        width: 50px;
-        height: 50px;
-        position: absolute;
-        left: -25px;
-        top: -25px;
-        background-color: white;
-        border: 2px solid rgba(189,174,238,1);
-        color: rgba(189,174,238,1);
-        border-radius: 25px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 100px;
-        cursor: pointer;
-    }
     .container{
+        p {
+            font-family: 'Fugaz One', cursive;
+            color: #ffffff;
+            text-shadow: #b99cff 3px 3px 0px, #b99cff -3px -3px 0px, #b99cff 0px -3px 0px, #b99cff -3px 0px 0px, #b99cff 0px 3px 0px, #b99cff 3px 0px 0px;
+            font-size: 1.5rem;
+            text-align: center;
+            line-height: 1.25;
+        }
+        
         position: relative;
         width: 60%;
         height: 50%;
-        background-color: rgba(255,255,255,1);
         padding: 20px;
+        
     }
     @media only screen and (max-width: 760px){
         .container{

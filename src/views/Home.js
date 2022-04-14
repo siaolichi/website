@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 
-import HomeAnimation from '../components/HomeAnimation';
 import { Context } from '../contexts';
 import Spinner from '../components/Spinner';
 import InfoModal from '../components/InfoModal';
@@ -24,9 +23,7 @@ const Home = () => {
 	return (
 		<div className='page'>
 			{state === false && <Spinner />}
-			<div ref={pageRef}>
-				<HomeAnimation />
-			</div>
+			<div style={{ height: '100vh', width: '100vw' }} ref={pageRef} />
 			<KeyboardArrowDownRoundedIcon style={arrowDownStyle} onClick={scrollToBottom} />
 			<KeyboardArrowDownRoundedIcon style={arrowUpStyle} onClick={scrollToTop} />
 			<div ref={infoRef}>
@@ -42,7 +39,8 @@ const arrowDownStyle = {
 	height: '64px',
 	color: 'white',
 	transform: 'translateY(-120px)',
-	cursor: 'pointer'
+	cursor: 'pointer',
+	stroke: '#b99cff'
 };
 const arrowUpStyle = {
 	width: '100%',

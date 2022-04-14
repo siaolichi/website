@@ -10,7 +10,7 @@ import useEffectListener from '../hooks/useEffectListener';
 
 const cards = works.default;
 
-const ArtSliders = ({ show }) => {
+const ArtSliders = () => {
 	const slideRef = useRef(null);
 	const targetRef = useRef(null);
 	const [targetLeft, setTargetLeft] = useState('');
@@ -54,7 +54,7 @@ const ArtSliders = ({ show }) => {
 			className='art-slider-page'
 			style={{
 				width: '100%',
-				height: '100%',
+				height: '100vh',
 				overflow: 'hidden'
 			}}
 		>

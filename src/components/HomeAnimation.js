@@ -3,7 +3,7 @@ import Canvas from './three/Canvas';
 
 const HomeAnimation = () => {
 	return (
-		<div style={{ height: '100vh', width: '100vw', position: 'auto' }}>
+		<div style={{ height: '100vh', width: '100vw', position: 'fixed' }}>
 			<Canvas></Canvas>
 		</div>
 	);
