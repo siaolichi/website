@@ -37,14 +37,15 @@ const ArtWorkPage = () => {
 						></iframe>
 					</div>
 				)}
-				<AwesomeSlider style={{ marginBottom: '80px' }}>
-					{work.photos.length > 1 &&
-						work.photos.map((photo, index) => (
+				{work.photos.length > 1 && (
+					<AwesomeSlider style={{ marginBottom: '80px' }}>
+						{work.photos.map((photo, index) => (
 							<div key={index}>
 								<img src={require(`../assets/images/${work.id}/${photo}`)} />
 							</div>
 						))}
-				</AwesomeSlider>
+					</AwesomeSlider>
+				)}
 
 				<div className='description' dangerouslySetInnerHTML={{ __html: work.description }} />
 			</div>

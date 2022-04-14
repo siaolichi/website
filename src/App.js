@@ -9,7 +9,7 @@ import ArtWorkPage from './views/ArtWorkPage';
 import Web from './views/Web';
 import Home from './views/Home';
 import Nav from './components/Nav';
-import HomeAnimation from './components/HomeAnimation';
+import Canvas from './components/three/Canvas';
 
 import { Provider } from './contexts';
 
@@ -20,7 +20,7 @@ function App() {
 		<Provider>
 			<Nav />
 			<div>
-				<HomeAnimation />
+				<Canvas />
 			</div>
 			<TransitionGroup component={null}>
 				<CSSTransition key={location.key} timeout={1000} classNames='fade'>
