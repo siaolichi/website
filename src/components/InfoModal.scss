@@ -8,7 +8,10 @@
         p {
             font-family: 'Fugaz One', cursive;
             color: #ffffff;
-            text-shadow: #b99cff 3px 3px 0px, #b99cff -3px -3px 0px, #b99cff 0px -3px 0px, #b99cff -3px 0px 0px, #b99cff 0px 3px 0px, #b99cff 3px 0px 0px;
+            text-shadow: 0 0 10px #4c00ff,
+                0 0 20px #4c00ff, 
+                0 0 40px #4c00ff;
+            // text-shadow: #b99cff 3px 3px 0px, #b99cff -3px -3px 0px, #b99cff 0px -3px 0px, #b99cff -3px 0px 0px, #b99cff 0px 3px 0px, #b99cff 3px 0px 0px;
             font-size: 1.5rem;
             text-align: center;
             line-height: 1.25;

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Parallax } from 'react-scroll-parallax';
+
 import './InfoModal.scss';
 
 const InfoModal = ({ modal, setModal }) => {
@@ -29,15 +31,19 @@ const InfoModal = ({ modal, setModal }) => {
 						</>
 					) : (
 						<div>
-							<p>
-								Hsiao Li-Chi is a multimedia artist graduated from Berlin University of Art, her works take on a variety
-								of forms such as Audio-Visual, sound, installations and live performances.{' '}
-							</p>
-							<p>Her works are mostly about the relationship of herself, the internet, and social society.</p>
-							<p>
-								Recently, her works reach the field of artificial intelligence and blockchain, trying to imagine the
-								virtual social activity of nearly future.
-							</p>
+							<Parallax translateX={[-50, 0]} opacity={[0.5, 2]} easing='ease' speed={10} shouldAlwaysCompleteAnimation>
+								<p>
+									Hsiao Li-Chi is a multimedia artist graduated from Berlin University of Art, her works take on a
+									variety of forms such as Audio-Visual, sound, installations and live performances.{' '}
+								</p>
+							</Parallax>
+							<Parallax translateX={[50, 0]} opacity={[0.5, 2]} easing='ease' speed={10} shouldAlwaysCompleteAnimation>
+								<p>Her works are mostly about the relationship of herself, the internet, and social society.</p>
+								<p>
+									Recently, her works reach the field of artificial intelligence and blockchain, trying to imagine the
+									virtual social activity of nearly future.
+								</p>
+							</Parallax>
 						</div>
 					)}
 				</div>

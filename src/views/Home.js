@@ -1,5 +1,5 @@
 import React, { useContext, useRef } from 'react';
-import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import KeyboardDoubleArrowDownRoundedIcon from '@mui/icons-material/KeyboardDoubleArrowDownRounded';
 
 import { Context } from '../contexts';
 import Spinner from '../components/Spinner';
@@ -15,17 +15,14 @@ const Home = () => {
 		infoRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	};
 
-	const scrollToTop = () => {
-		console.log('scroll to top');
-		pageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-	};
-
 	return (
 		<div className='page'>
 			{state === false && <Spinner />}
 			<div style={{ height: '100vh', width: '100vw' }} ref={pageRef} />
-			<KeyboardArrowDownRoundedIcon style={arrowDownStyle} onClick={scrollToBottom} />
-			<KeyboardArrowDownRoundedIcon style={arrowUpStyle} onClick={scrollToTop} />
+			<div style={scrollDownButtonStyle} onClick={scrollToBottom}>
+				Scroll down
+				<KeyboardDoubleArrowDownRoundedIcon style={arrowDownStyle} />
+			</div>
 			<div ref={infoRef}>
 				<InfoModal />
 			</div>
@@ -37,15 +34,16 @@ export default Home;
 const arrowDownStyle = {
 	width: '100%',
 	height: '64px',
-	color: 'white',
-	transform: 'translateY(-120px)',
-	cursor: 'pointer',
-	stroke: '#b99cff'
+	color: 'white'
 };
-const arrowUpStyle = {
-	width: '100%',
-	height: '64px',
+const scrollDownButtonStyle = {
 	color: 'white',
-	transform: 'translateY(120px) rotate(180deg)',
-	cursor: 'pointer'
+	cursor: 'pointer',
+	transform: 'translateY(-120px)',
+	display: 'flex',
+	flexDirection: 'column',
+	justifyContent: 'center',
+	alignItems: 'center',
+	textShadow: '0 0 10px #4c00ff, 0 0 20px #4c00ff, 0 0 40px #4c00ff',
+	fontFamily: 'Fugaz One'
 };

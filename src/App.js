@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import './App.scss';
 
@@ -17,22 +18,24 @@ function App() {
 	const location = useLocation();
 
 	return (
-		<Provider>
-			<Nav />
-			<div>
-				<Canvas />
-			</div>
-			<TransitionGroup component={null}>
-				<CSSTransition key={location.key} timeout={1000} classNames='fade'>
-					<Routes>
-						<Route path='art-works' exact element={<ArtSliders />} />
-						<Route path='art-works/:id' element={<ArtWorkPage />} />
-						<Route path='web-works' element={<Web />} />
-						<Route path='/' exact element={<Home />} />
-					</Routes>
-				</CSSTransition>
-			</TransitionGroup>
-		</Provider>
+		<ParallaxProvider>
+			<Provider>
+				<Nav />
+				<div>
+					<Canvas />
+				</div>
+				<TransitionGroup component={null}>
+					<CSSTransition key={location.key} timeout={1000} classNames='fade'>
+						<Routes>
+							<Route path='art-works' exact element={<ArtSliders />} />
+							<Route path='art-works/:id' element={<ArtWorkPage />} />
+							<Route path='web-works' element={<Web />} />
+							<Route path='/' exact element={<Home />} />
+						</Routes>
+					</CSSTransition>
+				</TransitionGroup>
+			</Provider>
+		</ParallaxProvider>
 	);
 }
 
